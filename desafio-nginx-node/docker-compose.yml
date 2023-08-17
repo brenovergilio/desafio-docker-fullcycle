@@ -9,7 +9,7 @@ services:
     networks:
       - fullcycle-nginx-node
     volumes:
-      - ./app:/usr/src/app
+      - ./app:/app
     tty: true
     ports:
       - "3000:3000"
