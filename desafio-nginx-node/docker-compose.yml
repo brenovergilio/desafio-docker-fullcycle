@@ -5,7 +5,7 @@ services:
     build:
       context: ./app
     container_name: app
-    entrypoint: wait-for database:3306 -t 40 -- node index.js
+    entrypoint: ["wait-for", "database:3306", "-t", "160", "--", "npm", "run", "install-and-run"]
     networks:
       - fullcycle-nginx-node
     volumes:
@@ -34,7 +34,7 @@ services:
     build:
       context: ./nginx
     container_name: nginx
-    entrypoint: ["wait-for", "app:3000", "-t", "40", "--", "nginx", "-g", "daemon off;"]
+    entrypoint: ["wait-for", "app:3000", "-t", "160", "--", "nginx", "-g", "daemon off;"]
     networks:
       - fullcycle-nginx-node
     tty: true
